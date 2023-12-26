@@ -9,4 +9,4 @@
 
 - result
 
-![Alt text](image1.png)
+![Alt text](./images/image1.png)
