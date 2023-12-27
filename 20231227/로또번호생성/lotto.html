@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행운의 숫자 추첨</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>행운의 숫자 추첨기</h1>
+    <button onclick="추첨하기()">추첨하기</button>
+    <button onclick="다시하기()">다시하기</button>
+    <div id="result"></div>
+
+    <script>
+        var 추첨된숫자들 = []; // 추첨된 숫자를 저장할 배열
+
+        function 추첨하기() {
+            // 1부터 45까지의 숫자를 배열에 저장
+            var 숫자들 = Array.from({ length: 45 }, (_, index) => index + 1);
+
+            // 배열을 섞기 (Fisher-Yates 알고리즘 사용)
+            for (let i = 숫자들.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [숫자들[i], 숫자들[j]] = [숫자들[j], 숫자들[i]];
+            }
+
+            // 첫 6개의 숫자 선택
+            추첨된숫자들 = 숫자들.slice(0, 6);
+
+            // 결과를 화면에 표시
+            var 결과창 = document.getElementById("result");
+            결과창.innerHTML = "추첨된 숫자: " + 추첨된숫자들.join(", ");
+        }
+
+        function 다시하기() {
+            // 추첨된 숫자 초기화
+            추첨된숫자들 = [];
+
+            // 결과창 초기화
+            var 결과창 = document.getElementById("result");
+            결과창.innerHTML = "";
+        }
+    </script>
+</body>
+</html>
