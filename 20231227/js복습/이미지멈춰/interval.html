@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이미지 변경 예제</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 50px;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            transition: background-image 0.5s ease-in-out;
+        }
+        button {
+            font-size: 16px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>자동 이미지 변경</h1>
+    <button onclick="시작()">시작</button>
+    <button onclick="멈춤()">멈춤</button>
+
+    <script>
+        var 이미지인덱스 = 1;
+        var intervalId;
+
+        function 시작() {
+            intervalId = setInterval(function () {
+                // 이미지 변경
+                document.body.style.backgroundImage = `url('./images/image-${이미지인덱스}.png')`;
+
+                // 다음 이미지 인덱스로 이동 (1, 2, 3 순환)
+                이미지인덱스 = (이미지인덱스 % 3) + 1;
+            }, 3000); // 2초마다 이미지 변경
+        }
+
+        function 멈춤() {
+            clearInterval(intervalId);
+        }
+    </script>
+</body>
+</html>
