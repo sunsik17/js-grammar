@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이스크림 추가</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        #iceCreamList {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>나만의 아이스크림 리스트</h1>
+    <button onclick="아이스크림추가()">아이스크림 추가</button>
+    <div id="iceCreamList"></div>
+
+    <script>
+        var 아이스크림목록 = []; // 아이스크림을 저장할 배열
+
+        function 아이스크림추가() {
+            // 사용자로부터 아이스크림 이름 입력 받기
+            var 아이스크림이름 = prompt("추가할 아이스크림 이름을 입력하세요:");
+
+            // 입력이 취소되지 않았고, 빈 문자열이 아닌 경우에만 추가
+            if (아이스크림이름 !== null && 아이스크림이름.trim() !== "") {
+                // 아이스크림 목록에 추가
+                아이스크림목록.push(아이스크림이름);
+
+                // 변경된 목록을 화면에 업데이트
+                업데이트목록();
+            }
+        }
+
+        function 업데이트목록() {
+            var 아이스크림리스트 = document.getElementById("iceCreamList");
+            아이스크림리스트.innerHTML = "<p>아이스크림 목록:</p><ul>";
+
+            // 아이스크림 목록을 순회하며 목록에 추가
+            for (var i = 0; i < 아이스크림목록.length; i++) {
+                아이스크림리스트.innerHTML += "<li>" + 아이스크림목록[i] + "</li>";
+            }
+
+            아이스크림리스트.innerHTML += "</ul>";
+        }
+    </script>
+</body>
+</html>
