@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위바위보 게임</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 50px;
+        }
+        #result {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>가위바위보 게임</h1>
+    <label for="userChoice">가위, 바위, 보 중 하나 선택:</label>
+    <select id="userChoice">
+        <option value="rock">바위</option>
+        <option value="paper">보</option>
+        <option value="scissors">가위</option>
+    </select>
+    <br>
+    <button onclick="게임시작()">게임 시작</button>
+    <div id="result"></div>
+
+    <script>
+        function 게임시작() {
+            var 사용자선택 = document.getElementById("userChoice").value;
+
+            // 컴퓨터가 랜덤으로 선택
+            var 컴퓨터선택 = ['rock', 'paper', 'scissors'][Math.floor(Math.random() * 3)];
+
+            // 결과 계산
+            var 결과 = 비교(사용자선택, 컴퓨터선택);
+
+            // 결과를 화면에 표시
+            var 결과창 = document.getElementById("result");
+            결과창.innerHTML = "사용자: " + 사용자선택 + "<br>컴퓨터: " + 컴퓨터선택 + "<br>결과: " + 결과;
+        }
+
+        function 비교(사용자, 컴퓨터) {
+            if (사용자 === 컴퓨터) {
+                return "무승부!";
+            } else if (
+                (사용자 === 'rock' && 컴퓨터 === 'scissors') ||
+                (사용자 === 'paper' && 컴퓨터 === 'rock') ||
+                (사용자 === 'scissors' && 컴퓨터 === 'paper')
+            ) {
+                return "사용자 승리!";
+            } else {
+                return "컴퓨터 승리!";
+            }
+        }
+    </script>
+</body>
+</html>
