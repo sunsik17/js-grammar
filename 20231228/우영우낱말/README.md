@@ -8,4 +8,5 @@ str = str.replace(/[^a-zA-Z]/g, '').toLowerCase();
 ```
 
 - 미리보기
+
 ![Alt text](image.png)
