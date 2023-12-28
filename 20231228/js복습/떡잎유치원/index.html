@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적 표</title>
+    <style>
+    table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .pass {
+        background-color: #b3ffb3; /* light green */
+    }
+    </style>
+</head>
+<body>
+
+<table>
+    <thead>
+        <tr>
+            <th>이름</th>
+            <th>점수</th>
+        </tr>
+    </thead>
+    <tbody id="scoreTableBody">
+    <!-- 데이터가 자동으로 삽입될 곳 -->
+    </tbody>
+</table>
+
+<h2>75점 이상인 학생</h2>
+<table>
+    <thead>
+        <tr>
+            <th>이름</th>
+        </tr>
+    </thead>
+    <tbody id="passTableBody">
+        <!-- 75점 이상인 학생의 이름이 자동으로 삽입될 곳 -->
+    </tbody>
+</table>
+
+<script>
+// 데이터 생성 함수
+function generateRandomScore() {
+    return Math.floor(Math.random() * 100) + 1;
+}
+
+// 학생 데이터
+const students = [
+    { name: '짱구', score: generateRandomScore() },
+    { name: '맹구', score: generateRandomScore() },
+    { name: '철수', score: generateRandomScore() },
+    { name: '훈이', score: generateRandomScore() },
+    { name: '유리', score: generateRandomScore() },
+    { name: '수지', score: generateRandomScore() }
+];
+
+// HTML 테이블에 데이터 추가
+const scoreTableBody = document.getElementById('scoreTableBody');
+const passTableBody = document.getElementById('passTableBody');
+
+students.forEach(student => {
+    const row = document.createElement('tr');
+    row.innerHTML = `<td>${student.name}</td><td>${student.score}</td>`;
+    
+    // 75점 이상인 경우 클래스를 추가하여 스타일을 변경
+    if (student.score > 75) {
+        row.classList.add('pass');
+        // 75점 이상인 경우 두 번째 테이블에 이름 추가
+        const passRow = document.createElement('tr');
+        passRow.innerHTML = `<td>${student.name}</td>`;
+        passTableBody.appendChild(passRow);
+    }
+
+    scoreTableBody.appendChild(row);
+});
+</script>
+
+</body>
+</html>
