@@ -76,14 +76,20 @@ students.forEach(student => {
     const row = document.createElement('tr');
     row.innerHTML = `<td>${student.name}</td><td>${student.score}</td>`;
     
+    let result = [];
     // 75점 이상인 경우 클래스를 추가하여 스타일을 변경
     if (student.score > 75) {
+        result.push([student.name, student.score]);
+    }
+    result.sort((x, y) => y[1] - x[1]);
+
+    result.forEach(s => {
         row.classList.add('pass');
         // 75점 이상인 경우 두 번째 테이블에 이름 추가
         const passRow = document.createElement('tr');
-        passRow.innerHTML = `<td>${student.name}</td>`;
+        passRow.innerHTML = `<td>${s[0]}</td>`;
         passTableBody.appendChild(passRow);
-    }
+    })
 
     scoreTableBody.appendChild(row);
 });
