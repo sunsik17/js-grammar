@@ -4,4 +4,4 @@
 
 - 영상
 
-![Alt text](<ToDo List-Chrome.gif>)
+![Alt text](<./video/ToDo List-Chrome.gif>)
